@@ -8,7 +8,6 @@ from django.utils.translation import ugettext_lazy as _
 from .fields import JSONField
 
 
-@python_2_unicode_compatible
 class TwitchAccount(models.Model):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
@@ -33,9 +32,11 @@ class TwitchAccount(models.Model):
         return self.account.extra_data.get('logo')
 
 
-@python_2_unicode_compatible
 class OAuth2AccessToken(models.Model):
-    account = models.OneToOneField(TwitchAccount)
+    account = models.OneToOneField(
+        TwitchAccount,
+        on_delete=models.CASCADE
+    )
     token = models.TextField(
         verbose_name=_('token'),
         help_text=_(
