@@ -4,7 +4,7 @@ import requests
 from django.contrib.auth import get_user_model
 from django.contrib.auth.backends import ModelBackend
 from django.contrib.auth.models import User
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 from twitch_auth import app_settings
 from twitch_auth.models import OAuth2AccessToken, TwitchAccount
