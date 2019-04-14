@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 def login(request):
     redirect_to = request.GET.get('next', app_settings.REDIRECT_URI)
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         return HttpResponseRedirect(redirect_to)
     authorize_url = 'https://api.twitch.tv/kraken/oauth2/authorize'
     params = {
