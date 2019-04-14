@@ -42,6 +42,7 @@ def callback(request):
         error_message = _('You denied access to your Twitch account') \
             if request.GET['error'] == 'access_denied' else _('Error while authentication via Twitch API')
         messages.error(request, error_message)
+        print('ERROR: [Twitch Auth] %s: %s' % (request.META['REMOTE_ADDR'], request.GET['error_description']))
         logger.error('[Twitch Auth] %s: %s' % (request.META['REMOTE_ADDR'], request.GET['error_description']))
         return HttpResponseRedirect('/')
     redirect_to = get_next_uri(request, request.GET['state'])
