@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.utils.crypto import get_random_string
 from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponseRedirect
