@@ -45,7 +45,7 @@ def callback(request):
         logger.error('[Twitch Auth] %s: %s' % (request.META['REMOTE_ADDR'], request.GET['error_description']))
         return HttpResponseRedirect('/')
     redirect_to = get_next_uri(request, request.GET['state'])
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         return HttpResponseRedirect(redirect_to)
     user = authenticate(code=request.GET['code'])
     if user and user.is_active:
